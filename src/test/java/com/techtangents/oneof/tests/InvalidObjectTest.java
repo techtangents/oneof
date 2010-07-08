@@ -1,0 +1,34 @@
+package com.techtangents.oneof.tests;
+
+import com.techtangents.oneof.api.DefaultOneOf;
+import com.techtangents.oneof.api.OneOf;
+import com.techtangents.oneof.data.Chicken;
+import com.techtangents.oneof.data.Frog;
+import org.junit.Test;
+
+import java.net.URL;
+
+public class InvalidObjectTest {
+
+    OneOf oneOf = new DefaultOneOf();
+
+    @Test(expected=IllegalArgumentException.class)
+    public void test1() {
+        oneOf.of("", Integer.class);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void test2() {
+        oneOf.of("", Integer.class, Frog.class);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void test3() {
+        oneOf.of("", Integer.class, Frog.class, Chicken.class);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void test4() {
+        oneOf.of("", Integer.class, Frog.class, Chicken.class, URL.class);
+    }
+}
