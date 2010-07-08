@@ -6,10 +6,11 @@ Java library that provides support for what I call a 'switched' data type. So, w
 A switched data type is a type that has a value of one of a set of types.
 
 Say, I have a value which may be a String, Integer or Foo. I could represent this in a few different ways:
-1. Loosely-typed as an object. This leads to class cast exceptions on access, instanceof checks, plus it could hold any value.
-2. class X { String s; Integer i; Foo f; }. This is hard to genericise, and you have to deal with nulls.
-3. Map of the superset of the properties of each class. Only really useful if the types only differ on a few fields.
-4. OneOf. e.g.
+
+ 1. Loosely-typed as an object. This leads to class cast exceptions on access, instanceof checks, plus it could hold any value.
+ 2. class X { String s; Integer i; Foo f; }. This is hard to genericise, and you have to deal with nulls.
+ 3. Map of the superset of the properties of each class. Only really useful if the types only differ on a few fields.
+ 4. OneOf. e.g.
 
 OneOf one = new DefaultOneOf();
 Object myobject = getMyObjectFromSomewhere();
