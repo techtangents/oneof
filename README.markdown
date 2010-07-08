@@ -12,9 +12,9 @@ Say, I have a value which may be a String, Integer or Foo. I could represent thi
  3. Map of the superset of the properties of each class. Only really useful if the types only differ on a few fields.
  4. OneOf. e.g.
 
-OneOf one = new DefaultOneOf();
-Object myobject = getMyObjectFromSomewhere();
-OneOf<String, Integer, Foo> o = one.of(myobject, String.class, Integer.class, Foo.class)  
+    OneOf one = new DefaultOneOf();
+    Object myobject = getMyObjectFromSomewhere();
+    OneOf<String, Integer, Foo> o = one.of(myobject, String.class, Integer.class, Foo.class)
 
 Under the hood, we're still storing as an Object. However:
 * the type of the object is validated upon creation of the oneOf
@@ -31,17 +31,16 @@ I'd like to be able to use the OneOf to switch on types and delegate to various 
 
 e.g. something along these lines... (yeah, it probably doesn't compile, just brainstorming)
 
-OneOf oneof = one.of(myobject, String.class, Integer.class);
+    OneOf oneof = one.of(myobject, String.class, Integer.class);
+    interface Handler<I, O> { O handle(I in); }
+    class MyStringHandler implements Handler<String, Something>...
+    class MyIntegerHandler implements Handler<Integer, Something>...
 
-interface Handler<I, O> { O handle(I in); }
-class MyStringHandler implements Handler<String, Something>...
-class MyIntegerHandler implements Handler<Integer, Something>...
+    Map<Class, Handler<?, T>> m = new Map<Class, Handler>();
+    m.put(String.class, new MyStringHandler());
+    m.put(Integer.class, new MyIntegerHandler());
 
-Map<Class, Handler<?, T>> m = new Map<Class, Handler>();
-m.put(String.class, new MyStringHandler());
-m.put(Integer.class, new MyIntegerHandler());
-
-Something s = oneof.invoke(m);
+    Something s = oneof.invoke(m);
 
 Types
 -----
@@ -50,7 +49,7 @@ I'd like to separate the creation of a switched type from the instantiation.
 
 e.g.
 
-OneOfType<String, Integer> myType = one.of(String.class, Integer.class);
-OneOfValue<String Integer> myValue = myType.nu(myobject);
+    OneOfType<String, Integer> myType = one.of(String.class, Integer.class);
+    OneOfValue<String Integer> myValue = myType.nu(myobject);
 
 myType.nu would do the type validation.
