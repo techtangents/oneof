@@ -14,7 +14,7 @@ Say, I have a value which may be a String, Integer or Foo. I could represent thi
 
 OneOf one = new DefaultOneOf();
 Object myobject = getMyObjectFromSomewhere();
-OneOf<String, Integer, Foo> o = one.of(myobject, String.class, Integer.class, Foo.class)
+OneOf<String, Integer, Foo> o = one.of(myobject, String.class, Integer.class, Foo.class)  
 
 Under the hood, we're still storing as an Object. However:
 * the type of the object is validated upon creation of the oneOf
