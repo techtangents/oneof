@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="c45d9729-afdc-4d27-a498-0c2b397fd6f6" name="Default" comment="" />
+    <list default="true" readonly="true" id="c45d9729-afdc-4d27-a498-0c2b397fd6f6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oneof.iws" afterPath="$PROJECT_DIR$/oneof.iws" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/readme.markdown" />
+    </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="switcheroos.iws" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -116,15 +119,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OneOf2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/techtangents/oneof/iface/OneOf2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OneOf3Test.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/techtangents/oneof/tests/OneOf3Test.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -143,10 +137,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OneOfInvocationHandler.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="OneOfInvocationHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/techtangents/oneof/core/OneOfInvocationHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="696" selection-end="696" vertical-scroll-proportion="0.5945946">
+            <state line="23" column="0" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.markdown" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.markdown">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="39" selection-start="1936" selection-end="1936" vertical-scroll-proportion="0.9104478">
               <folding />
             </state>
           </provider>
@@ -166,7 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/techtangents/switcheroos/iface/OneOf1.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/techtangents/switcheroos/core/OneOfFactory.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/techtangents/switcheroos/tests/InvalidIsTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/techtangents/switcheroos/core/MyInvocationHandler.java" />
@@ -182,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/techtangents/oneof/core/Validator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/techtangents/oneof/core/OneOfInvocationHandler.java" />
         <option value="$PROJECT_DIR$/src/demo/java/com/techtangents/oneof/demo/OneOfDemo.java" />
+        <option value="$PROJECT_DIR$/readme.markdown" />
       </list>
     </option>
   </component>
@@ -215,7 +218,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -755,9 +758,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1280" height="750" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -768,7 +771,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24938676" sideWeight="0.6594684" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24938676" sideWeight="0.6594684" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="125" width="1080" height="550" />
@@ -892,7 +895,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/techtangents/oneof/core/OneOfInvocationHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="696" selection-end="696" vertical-scroll-proportion="0.5945946">
+        <state line="23" column="0" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.markdown">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="39" selection-start="1936" selection-end="1936" vertical-scroll-proportion="0.9104478">
           <folding />
         </state>
       </provider>
