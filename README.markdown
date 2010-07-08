@@ -38,9 +38,9 @@ e.g. something along these lines... (yeah, it probably doesn't compile, just bra
 
     Map<Class, Handler<?, T>> m = new Map<Class, Handler>();
     m.put(String.class, new MyStringHandler());
-    m.put(Integer.class, new MyIntegerHandler());
+    m.put(Integer.class, new MyIntegerHandler());  
 
-    Something s = oneof.invoke(m);
+    Something s = oneof.invoke(m);  
 
 Types
 -----
