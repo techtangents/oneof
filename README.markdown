@@ -43,7 +43,15 @@ e.g. something along these lines... (yeah, it probably doesn't compile, just bra
     m.put(String.class, new MyStringHandler());
     m.put(Integer.class, new MyIntegerHandler());  
 
-    Something s = oneof.invoke(m);  
+    Something s = oneof.invoke(m);
+
+Or similar:
+
+    Class handler {
+       Something handle(String s) {...}
+       Something handle(Integer i) {...}
+
+There's a few other options with some more reflecty magic.
 
 Types
 -----
