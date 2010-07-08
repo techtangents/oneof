@@ -19,6 +19,7 @@ Using OneOf, you'd do something like this:
     OneOf<String, Integer, Foo> o = one.of(myobject, String.class, Integer.class, Foo.class)
 
 Under the hood, we're still storing as an Object. However:
+
 - the type of the object is validated earlier. It's validated upon creation of the oneOf, which is earlier than a cast on the way out.
 - it's also validated upon access, if you use get(Class)
 - type-checking is encapsulated
