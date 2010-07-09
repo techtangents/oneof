@@ -3,7 +3,7 @@ package com.techtangents.oneof.tests;
 import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
 import com.techtangents.oneof.data.Frog;
-import com.techtangents.oneof.iface.OneOf4;
+import com.techtangents.oneof.values.OneOf4;
 import com.techtangents.oneof.data.Chicken;
 import org.junit.Test;
 

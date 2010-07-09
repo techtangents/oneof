@@ -1,4 +1,4 @@
-package com.techtangents.oneof.iface;
+package com.techtangents.oneof.values;
 
 import java.util.Map;
 

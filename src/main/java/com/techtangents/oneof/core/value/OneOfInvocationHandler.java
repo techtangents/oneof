@@ -1,4 +1,4 @@
-package com.techtangents.oneof.core;
+package com.techtangents.oneof.core.value;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -25,7 +25,7 @@ class OneOfInvocationHandler implements InvocationHandler {
         if (methodName.equals("is")) {
             return is(o, (Class) args[0]);
         } else if (methodName.startsWith("is")) {
-            return isX(o, methodName, clarses);
+            return isX(o, methodName);
         } else if (methodName.equals("get")) {
             return get(o, args);
         } else if (methodName.startsWith("get")) {
@@ -48,7 +48,7 @@ class OneOfInvocationHandler implements InvocationHandler {
         return clarse.cast(o);
     }
 
-    private Object isX(Object o, String methodName, Class[] clarses) {
+    private Object isX(Object o, String methodName) {
         Class clarse = pickClass(methodName, "is");
         return is(o, clarse);
     }

@@ -1,12 +1,12 @@
-package com.techtangents.oneof.core;
+package com.techtangents.oneof.core.value;
 
 import com.techtangents.oneof.api.DefaultOneOf;
-import com.techtangents.oneof.iface.OneOf1;
+import com.techtangents.oneof.values.OneOf1;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
-public class OneOfFactory {
+public class OneOfValueFactory {
     private final Validator validator = new Validator();
 
     public Object make(Object o, Class<? extends OneOf1> cls, final Class... clarses) {

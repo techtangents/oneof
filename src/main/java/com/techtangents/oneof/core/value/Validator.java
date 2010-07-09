@@ -1,4 +1,4 @@
-package com.techtangents.oneof.core;
+package com.techtangents.oneof.core.value;
 
 public class Validator {
     public void validateObject(Object o, Class[] clarses) {

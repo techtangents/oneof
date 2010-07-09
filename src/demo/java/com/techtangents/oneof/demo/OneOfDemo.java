@@ -2,7 +2,8 @@ package com.techtangents.oneof.demo;
 
 import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
-import com.techtangents.oneof.iface.OneOf2;
+import com.techtangents.oneof.types.OneOf2Type;
+import com.techtangents.oneof.values.OneOf2;
 
 
 public class OneOfDemo {
@@ -12,7 +13,8 @@ public class OneOfDemo {
     public static void main(String[] args) {
 
         Object o = "hello";
-        OneOf2<String, Integer> container = one.nu(o, String.class, Integer.class);
+        OneOf2Type<String, Integer> type = one.of(String.class, Integer.class);
+        OneOf2<String, Integer> container = type.nu(o);
 
         System.out.println("container.get() = " + container.get());
         System.out.println("container.getA() = " + container.getA());

@@ -2,7 +2,7 @@ package com.techtangents.oneof.tests;
 
 import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
-import com.techtangents.oneof.iface.OneOf1;
+import com.techtangents.oneof.values.OneOf1;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
