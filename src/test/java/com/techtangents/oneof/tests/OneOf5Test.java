@@ -45,10 +45,17 @@ public class OneOf5Test {
             //expected
         }
 
+        try {
+            one.getC();
+            fail();
+        } catch (ClassCastException expected) {
+            //expected
+        }
+
         assertEquals(value, one.getD());
 
         try {
-            one.getC();
+            one.getE();
             fail();
         } catch (ClassCastException expected) {
             //expected

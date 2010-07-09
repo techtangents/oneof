@@ -8,7 +8,7 @@ import com.techtangents.oneof.values.OneOf2;
 
 public class OneOfDemo {
 
-    public static OneOf one = new DefaultOneOf();
+    private static final OneOf one = new DefaultOneOf();
 
     public static void main(String[] args) {
 

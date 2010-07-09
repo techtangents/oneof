@@ -11,7 +11,7 @@ import static org.junit.Assert.fail;
 public class InvalidGetTest {
 
     private final OneOf oneOf = new DefaultOneOf();
-    OneOf2<String, Frog> one = oneOf.nu("", String.class, Frog.class);
+    private final OneOf2<String, Frog> one = oneOf.nu("", String.class, Frog.class);
 
     @Test
     public void test() {

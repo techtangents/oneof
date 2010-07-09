@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class InvalidObjectTest {
 
-    OneOf oneOf = new DefaultOneOf();
+    private final OneOf oneOf = new DefaultOneOf();
 
     @Test(expected=IllegalArgumentException.class)
     public void test1() {
