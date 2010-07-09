@@ -16,10 +16,10 @@ class OneOfInvocationHandler implements InvocationHandler {
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        return handle(o, method, args, clarses);
+        return handle(o, method, args);
     }
 
-    private Object handle(Object o, Method method, Object[] args, Class[] clarses) {
+    private Object handle(Object o, Method method, Object[] args) {
         String methodName = method.getName();
 
         if (methodName.equals("is")) {
