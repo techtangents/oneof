@@ -16,7 +16,14 @@ Using OneOf, you'd do something like this:
 
     OneOf one = new DefaultOneOf();
     Object myobject = getMyObjectFromSomewhere();
-    OneOf<String, Integer, Foo> o = one.of(myobject, String.class, Integer.class, Foo.class)
+    OnOf1Type<String, Integer, Foo> type = one.of(String.class, Integer.class, Foo.class);
+    OneOf<String, Integer, Foo> o = type.nu(myobject);
+
+You can also create the type and value on one step
+
+    OneOf one = new DefaultOneOf();
+    Object myobject = getMyObjectFromSomewhere();
+    OneOf<String, Integer, Foo> o = one.nu(myobject, String.class, Integer.class, Foo.class)
 
 Under the hood, we're still storing as an Object. However:
 
@@ -52,15 +59,3 @@ Or similar:
        Something handle(Integer i) {...}
 
 There's a few other options with some more reflecty magic.
-
-Types
------
-
-I'd like to separate the creation of a switched type from the instantiation.
-
-e.g.
-
-    OneOfType<String, Integer> myType = one.of(String.class, Integer.class);
-    OneOfValue<String Integer> myValue = myType.nu(myobject);
-
-myType.nu would do the type validation.
