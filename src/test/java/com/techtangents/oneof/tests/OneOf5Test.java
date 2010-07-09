@@ -12,36 +12,47 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class OneOf5Test {
-    private final OneOf oneOf = new DefaultOneOf();
+    private final OneOf one = new DefaultOneOf();
 
     @Test
     public void test() {
         Object value = new Frog();
-        OneOf5 one = oneOf.nu(value, String.class, Integer.class, Chicken.class, Frog.class, Donkey.class);
+        check(value, one.nu(value, String.class, Integer.class, Chicken.class, Frog.class, Donkey.class));
+        check(value, one.of(String.class, Integer.class, Chicken.class, Frog.class, Donkey.class).nu(value));
+    }
 
+    private void check(Object value, OneOf5 one) {
         assertEquals(value, one.get());
 
         try {
             one.getA();
             fail();
-        } catch(ClassCastException expected) {}
+        } catch (ClassCastException expected) {
+            //expected
+        }
 
         try {
             one.getB();
             fail();
-        } catch(ClassCastException expected) {}
+        } catch (ClassCastException expected) {
+            //expected
+        }
 
         try {
             one.getC();
             fail();
-        } catch(ClassCastException expected) {}
+        } catch (ClassCastException expected) {
+            //expected
+        }
 
         assertEquals(value, one.getD());
 
         try {
             one.getC();
             fail();
-        } catch(ClassCastException expected) {}
+        } catch (ClassCastException expected) {
+            //expected
+        }
 
         assertEquals(false, one.isA());
         assertEquals(false, one.isB());

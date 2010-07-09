@@ -2,38 +2,47 @@ package com.techtangents.oneof.tests;
 
 import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
+import com.techtangents.oneof.data.Chicken;
 import com.techtangents.oneof.data.Frog;
 import com.techtangents.oneof.values.OneOf4;
-import com.techtangents.oneof.data.Chicken;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class OneOf4Test {
-    private final OneOf oneOf = new DefaultOneOf();
+    private final OneOf one = new DefaultOneOf();
 
     @Test
     public void test() {
         Object value = new Frog();
-        OneOf4 one = oneOf.nu(value, String.class, Integer.class, Chicken.class, Frog.class);
+        check(value, one.nu(value, String.class, Integer.class, Chicken.class, Frog.class));
+        check(value, one.of(String.class, Integer.class, Chicken.class, Frog.class).nu(value));
+    }
 
+    private void check(Object value, OneOf4 one) {
         assertEquals(value, one.get());
 
         try {
             one.getA();
             fail();
-        } catch(ClassCastException expected) {}
+        } catch (ClassCastException expected) {
+            //expected
+        }
 
         try {
             one.getB();
             fail();
-        } catch(ClassCastException expected) {}
+        } catch (ClassCastException expected) {
+            //expected
+        }
 
         try {
             one.getC();
             fail();
-        } catch(ClassCastException expected) {}
+        } catch (ClassCastException expected) {
+            //expected
+        }
 
 
         assertEquals(value, one.getD());
