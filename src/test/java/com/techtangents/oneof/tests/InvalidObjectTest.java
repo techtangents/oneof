@@ -14,21 +14,21 @@ public class InvalidObjectTest {
 
     @Test(expected=IllegalArgumentException.class)
     public void test1() {
-        oneOf.of("", Integer.class);
+        oneOf.nu("", Integer.class);
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void test2() {
-        oneOf.of("", Integer.class, Frog.class);
+        oneOf.nu("", Integer.class, Frog.class);
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void test3() {
-        oneOf.of("", Integer.class, Frog.class, Chicken.class);
+        oneOf.nu("", Integer.class, Frog.class, Chicken.class);
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void test4() {
-        oneOf.of("", Integer.class, Frog.class, Chicken.class, URL.class);
+        oneOf.nu("", Integer.class, Frog.class, Chicken.class, URL.class);
     }
 }

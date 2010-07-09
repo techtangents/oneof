@@ -17,7 +17,7 @@ public class OneOf5Test {
     @Test
     public void test() {
         Object value = new Frog();
-        OneOf5 one = oneOf.of(value, String.class, Integer.class, Chicken.class, Frog.class, Donkey.class);
+        OneOf5 one = oneOf.nu(value, String.class, Integer.class, Chicken.class, Frog.class, Donkey.class);
 
         assertEquals(value, one.get());
 

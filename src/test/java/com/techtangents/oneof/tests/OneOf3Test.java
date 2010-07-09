@@ -15,7 +15,7 @@ public class OneOf3Test {
     @Test
     public void test() {
         Object value = "hello";
-        OneOf3<String, Integer, Chicken> one = oneOf.of(value, String.class, Integer.class, Chicken.class);
+        OneOf3<String, Integer, Chicken> one = oneOf.nu(value, String.class, Integer.class, Chicken.class);
 
         assertEquals(value, one.get());
         assertEquals(value, one.getA());

@@ -12,7 +12,7 @@ public class OneOfDemo {
     public static void main(String[] args) {
 
         Object o = "hello";
-        OneOf2<String, Integer> container = one.of(o, String.class, Integer.class);
+        OneOf2<String, Integer> container = one.nu(o, String.class, Integer.class);
 
         System.out.println("container.get() = " + container.get());
         System.out.println("container.getA() = " + container.getA());

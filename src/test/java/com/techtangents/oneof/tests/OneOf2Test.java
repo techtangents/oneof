@@ -14,7 +14,7 @@ public class OneOf2Test {
     @Test
     public void test() {
         Object value = "hello";
-        OneOf2 one = oneOf.of(value, String.class, Integer.class);
+        OneOf2 one = oneOf.nu(value, String.class, Integer.class);
 
         assertEquals(value, one.get());
         assertEquals(value, one.getA());

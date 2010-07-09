@@ -16,7 +16,7 @@ public class OneOf4Test {
     @Test
     public void test() {
         Object value = new Frog();
-        OneOf4 one = oneOf.of(value, String.class, Integer.class, Chicken.class, Frog.class);
+        OneOf4 one = oneOf.nu(value, String.class, Integer.class, Chicken.class, Frog.class);
 
         assertEquals(value, one.get());
 
