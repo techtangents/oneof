@@ -1,4 +1,4 @@
-package com.techtangents.oneof.tests;
+package com.techtangents.oneof.tests.invalid;
 
 import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
