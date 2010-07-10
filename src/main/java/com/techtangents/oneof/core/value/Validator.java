@@ -23,10 +23,6 @@ public class Validator {
         return false;
     }
 
-    public void validateCast(Object o, Class to) {
-        if (!isValidCast(o, to)) kersplode(o.getClass());    
-    }
-
     public boolean isValidCast(Object o, Class to) {
         return isValidCast(o.getClass(), to); 
     }

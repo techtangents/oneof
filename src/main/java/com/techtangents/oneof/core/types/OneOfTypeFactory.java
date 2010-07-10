@@ -5,7 +5,8 @@ import com.techtangents.oneof.types.value.OneOf;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+
+import static java.lang.reflect.Proxy.newProxyInstance;
 
 public class OneOfTypeFactory {
 
@@ -17,12 +18,11 @@ public class OneOfTypeFactory {
     }
 
     private Object bake(Class typeClass, final Class<? extends OneOf> valueClass, final Class[] classes) {
-        return Proxy.newProxyInstance(valueClass.getClassLoader(), new Class[]{typeClass}, new InvocationHandler() {
+        return newProxyInstance(valueClass.getClassLoader(), new Class[]{typeClass}, new InvocationHandler() {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 String methodName = method.getName();
-                if (methodName.equals("nu")) {
+                if (methodName.equals("nu"))
                     return f.make(args[0], valueClass, classes);
-                }
                 throw new UnsupportedOperationException();
             }
         });
