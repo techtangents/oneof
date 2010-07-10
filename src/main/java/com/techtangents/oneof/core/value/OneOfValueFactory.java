@@ -10,7 +10,7 @@ import static java.lang.reflect.Proxy.newProxyInstance;
 public class OneOfValueFactory {
 
     public Object make(Object o, Class<? extends OneOf> cls, final Class... clarses) {
-        InvocationHandler i = new OneOfInvocationHandler(o, clarses);
+        InvocationHandler i = new Dispatcher(o, clarses);
         return newProxyInstance(DefaultOne.class.getClassLoader(), new Class[]{cls}, i);
     }
 }

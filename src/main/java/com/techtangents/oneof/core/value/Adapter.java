@@ -5,38 +5,20 @@ import com.techtangents.arraymangler.bits.DefaultArrayCaster;
 import com.techtangents.oneof.core.string.Violin;
 import com.techtangents.oneof.invoke.Fn;
 import com.techtangents.oneof.types.value.DefaultOneOfMany;
+import com.techtangents.oneof.types.value.OneOf;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-
-class OneOfInvocationHandler implements InvocationHandler {
+class Adapter {
 
     private final Violin violin = new Violin();
     private final ArrayCaster arrayCaster = new DefaultArrayCaster();
-    
-    private final DefaultOneOfMany many;
 
-    public OneOfInvocationHandler(Object o, Class[] clarses) {
+    private final OneOf many;
+
+    public Adapter(Object o, Class[] clarses) {
         many = new DefaultOneOfMany(o, clarses);
     }
 
-    public Object invoke(Object proxy, Method method, Object[] args) {
-        return handle(method, args);
-    }
-
-    private Object handle(Method method, Object[] args) {
-        String methodName = method.getName();
-
-        if (methodName.equals("is"))           return is(args);
-        else if (methodName.startsWith("is"))  return is(methodName);
-        else if (methodName.equals("get"))     return get(args);
-        else if (methodName.startsWith("get")) return getX(methodName);
-        else if (methodName.equals("invoke"))  return theOtherInvoke(args);
-
-        throw new UnsupportedOperationException();
-    }
-
-    private Object is(Object[] args) {
+    public Object is(Object[] args) {
         Object v = args[0];
         if (v instanceof Class<?>) {
             return many.is((Class<?>)v);
@@ -46,7 +28,7 @@ class OneOfInvocationHandler implements InvocationHandler {
         throw new UnsupportedOperationException();
     }
 
-    private Object is(String methodName) {
+    public Object is(String methodName) {
         int i = pick(methodName, "is");
         return many.is(i);
     }
@@ -65,7 +47,7 @@ class OneOfInvocationHandler implements InvocationHandler {
         }
     }
 
-    private Object getX(String methodName) {
+    public Object getX(String methodName) {
         int i = pick(methodName, "get");
         return many.get(i);
     }
@@ -76,7 +58,7 @@ class OneOfInvocationHandler implements InvocationHandler {
     }
 
     @SuppressWarnings("unchecked")
-    private Object theOtherInvoke(Object[] args) {
+    public Object invoke(Object[] args) {
         Fn[] fns = getInvokeArgs(args);
         return many.invoke(fns);
     }
