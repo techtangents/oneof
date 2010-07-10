@@ -12,7 +12,8 @@ public class OneOfValueFactory {
 
     public Object make(Object o, Class<? extends OneOf> cls, final Class... clarses) {
         OneOf many = new DefaultOneOfMany(o, clarses);
-        InvocationHandler i = new Dispatcher(many);
+        Adapter adapter = new Adapter(many);
+        InvocationHandler i = new Dispatcher(adapter);
         return newProxyInstance(DefaultOne.class.getClassLoader(), new Class[]{cls}, i);
     }
 }

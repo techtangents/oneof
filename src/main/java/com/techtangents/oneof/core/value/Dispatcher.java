@@ -1,7 +1,5 @@
 package com.techtangents.oneof.core.value;
 
-import com.techtangents.oneof.types.value.OneOf;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -9,8 +7,8 @@ class Dispatcher implements InvocationHandler {
 
     private final Adapter adapter;
 
-    public Dispatcher(OneOf many) {
-        adapter = new Adapter(many);
+    public Dispatcher(Adapter adapter) {
+        this.adapter = adapter;
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) {
