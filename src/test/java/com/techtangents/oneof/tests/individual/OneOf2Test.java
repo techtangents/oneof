@@ -25,7 +25,7 @@ public class OneOf2Test {
         try {
             one.getB();
             fail();
-        } catch(ClassCastException expected) {
+        } catch(Exception expected) {
             //expected
         }
 

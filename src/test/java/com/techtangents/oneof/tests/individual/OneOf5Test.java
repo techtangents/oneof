@@ -27,28 +27,28 @@ public class OneOf5Test {
         try {
             one.getA();
             fail();
-        } catch (ClassCastException expected) {
+        } catch (Exception expected) {
             //expected
         }
 
         try {
             one.getB();
             fail();
-        } catch (ClassCastException expected) {
+        } catch (Exception expected) {
             //expected
         }
 
         try {
             one.getC();
             fail();
-        } catch (ClassCastException expected) {
+        } catch (Exception expected) {
             //expected
         }
 
         try {
             one.getC();
             fail();
-        } catch (ClassCastException expected) {
+        } catch (Exception expected) {
             //expected
         }
 
@@ -57,7 +57,7 @@ public class OneOf5Test {
         try {
             one.getE();
             fail();
-        } catch (ClassCastException expected) {
+        } catch (Exception expected) {
             //expected
         }
 

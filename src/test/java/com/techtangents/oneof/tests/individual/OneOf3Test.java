@@ -26,14 +26,14 @@ public class OneOf3Test {
         try {
             one.getB();
             fail();
-        } catch(ClassCastException expected) {
+        } catch(Exception expected) {
             //expected
         }
 
         try {
             one.getC();
             fail();
-        } catch(ClassCastException expected) {
+        } catch(Exception expected) {
             //expected
         }
 

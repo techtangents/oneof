@@ -1,6 +1,6 @@
 package com.techtangents.oneof.values;
 
-import java.util.Map;
+import com.techtangents.oneof.invoke.Fn;
 
 public interface OneOf1<A> {
 
@@ -12,6 +12,5 @@ public interface OneOf1<A> {
     boolean isA();
     A getA();
 
-    // FIX not sure how to handle this guy
-    <Q> Object invoke(Map<Class, Object> m, String methodName, Class<Q> returnType);
+    <Out> Out invoke(Fn<A, Out> a);
 }
