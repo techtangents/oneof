@@ -71,6 +71,7 @@ public class InvokeTest {
     private void check3(Object expected, Object o) {
         OneOf3<Frog, Integer,String> onesey = one.of(Frog.class, Integer.class, String.class).nu(o);
         assertEquals(expected, onesey.invoke(frogHandler, integerHandler, stringHandler));
+        assertEquals(expected, onesey.invoke(new Fn[] {frogHandler, integerHandler, stringHandler}));
     }
     
     @Test public void test4() {
@@ -83,6 +84,7 @@ public class InvokeTest {
     private void check4(Object expected, Object o) {
         OneOf4<Frog, Integer, Donkey, String> onesey = one.of(Frog.class, Integer.class, Donkey.class, String.class).nu(o);
         assertEquals(expected, onesey.invoke(frogHandler, integerHandler, donkeyHandler, stringHandler));
+        assertEquals(expected, onesey.invoke(new Fn[] {frogHandler, integerHandler, donkeyHandler, stringHandler}));
     }
 
     @Test public void test5() {
@@ -95,6 +97,7 @@ public class InvokeTest {
     private void check5(Object expected, Object o) {
         OneOf5<Frog, Integer, Donkey, String, Chicken> onesey = one.of(Frog.class, Integer.class, Donkey.class, String.class, Chicken.class).nu(o);
         assertEquals(expected, onesey.invoke(frogHandler, integerHandler, donkeyHandler, stringHandler, chickenHandler));
+        assertEquals(expected, onesey.invoke(new Fn[] {frogHandler, integerHandler, donkeyHandler, stringHandler, chickenHandler}));
     }
 
 //        SwitchMap2<String, String, Integer> m = new SwitchMap2<String, String, Integer>(
