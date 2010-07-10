@@ -4,7 +4,6 @@ import com.techtangents.arraymangler.bits.ArrayCaster;
 import com.techtangents.arraymangler.bits.DefaultArrayCaster;
 import com.techtangents.oneof.core.string.Violin;
 import com.techtangents.oneof.invoke.Fn;
-import com.techtangents.oneof.types.value.DefaultOneOfMany;
 import com.techtangents.oneof.types.value.OneOf;
 
 class Adapter {
@@ -14,8 +13,8 @@ class Adapter {
 
     private final OneOf many;
 
-    public Adapter(Object o, Class[] clarses) {
-        many = new DefaultOneOfMany(o, clarses);
+    public Adapter(OneOf many) {
+        this.many = many;
     }
 
     public Object is(Object[] args) {
