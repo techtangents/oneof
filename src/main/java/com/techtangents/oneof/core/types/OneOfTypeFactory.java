@@ -19,7 +19,11 @@ public class OneOfTypeFactory {
     private Object bake(Class typeClass, final Class<? extends OneOf1> valueClass, final Class[] classes) {
         return Proxy.newProxyInstance(valueClass.getClassLoader(), new Class[]{typeClass}, new InvocationHandler() {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                return f.make(args[0], valueClass, classes);
+                String methodName = method.getName();
+                if (methodName.equals("nu")) {
+                    return f.make(args[0], valueClass, classes);
+                }
+                throw new UnsupportedOperationException();
             }
         });
     }

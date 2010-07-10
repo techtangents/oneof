@@ -1,72 +1,71 @@
 package com.techtangents.oneof.core.value;
 
+import com.techtangents.arraymangler.bits.ArrayCaster;
+import com.techtangents.arraymangler.bits.DefaultArrayCaster;
+import com.techtangents.oneof.invoke.Fn;
+import com.techtangents.oneof.string.Violin;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 class OneOfInvocationHandler implements InvocationHandler {
 
-    private final Validator validator = new Validator();
-
-    private final Object o;
-    private final Class[] clarses;
+    private final OneOfMany many;
+    private final Violin violin = new Violin();
+    private final ArrayCaster arrayCaster = new DefaultArrayCaster();
 
     public OneOfInvocationHandler(Object o, Class[] clarses) {
-        this.o = o;
-        this.clarses = clarses;
+        many = new OneOfMany(o, clarses);
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) {
-        return handle(o, method, args);
+        return handle(method, args);
     }
 
-    private Object handle(Object o, Method method, Object[] args) {
+    private Object handle(Method method, Object[] args) {
         String methodName = method.getName();
 
-        if (methodName.equals("is")) {
-            return is(o, (Class) args[0]);
-        } else if (methodName.startsWith("is")) {
-            return isX(o, methodName);
-        } else if (methodName.equals("get")) {
-            return get(o, args);
-        } else if (methodName.startsWith("get")) {
-            return getX(o, methodName);
-        }
+        if (methodName.equals("is"))           return is(args);
+        else if (methodName.startsWith("is"))  return is(methodName);
+        else if (methodName.equals("get"))     return get(args);
+        else if (methodName.startsWith("get")) return getX(methodName);
+        else if (methodName.equals("invoke"))  return theOtherInvoke(args);
 
         throw new UnsupportedOperationException();
     }
 
-    private Object get(Object o, Object[] args) {
+    private Object is(Object[] args) {
+        Class c = (Class) args[0];
+        return many.is(c);
+    }
+
+    private Object is(String methodName) {
+        int i = pick(methodName, "is");
+        return many.is(i);
+    }
+
+    public Object get(Object[] args) {
         if (args != null && args.length == 1) {
             Class clarse = (Class) args[0];
-            validator.validateCast(o, clarse);
+            return many.get(clarse);
+        } else {
+            return many.get();
         }
-        return o;
     }
 
-    private Object getX(Object o, String methodName) {
-        Class clarse = pickClass(methodName, "get");
-        return clarse.cast(o);
+    private Object getX(String methodName) {
+        int i = pick(methodName, "get");
+        return many.get(i);
     }
 
-    private Object isX(Object o, String methodName) {
-        Class clarse = pickClass(methodName, "is");
-        return is(o, clarse);
+    private int pick(String methodName, String prefix) {
+        String suffix = violin.removePrefix(methodName, prefix);
+        return suffix.charAt(0) - 'A';
     }
 
-    private Class pickClass(String methodName, String prefix) {
-        String suffix = removePrefix(methodName, prefix);
-        int index = suffix.charAt(0) - 'A';
-        return clarses[index];
-    }
-
-    private String removePrefix(String s, String prefix) {
-        return s.startsWith(prefix)
-                ? s.substring(prefix.length())
-                : s;
-    }
-
-    private Object is(Object o, Class clarse) {
-        validator.validateClass(clarse, clarses);
-        return validator.isValidCast(o, clarse);
+    @SuppressWarnings("unchecked")
+    private Object theOtherInvoke(Object[] args) {
+        Fn[] fns = arrayCaster.cast(Fn.class, args);
+        return many.invoke(fns);
     }
 }
