@@ -48,7 +48,7 @@ class OneOfInvocationHandler implements InvocationHandler {
 
     public Object get(Object[] args) {
         if (args != null && args.length == 1) {
-            Class clarse = (Class) args[0];
+            Class<?> clarse = (Class<?>) args[0];
             return many.get(clarse);
         } else {
             return many.get();

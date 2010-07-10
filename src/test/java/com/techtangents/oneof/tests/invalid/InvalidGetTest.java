@@ -18,6 +18,6 @@ public class InvalidGetTest {
         try {
             oneOf.get(Double.class);
             fail();
-        } catch(IllegalArgumentException expected){}
+        } catch(Exception expected){}
     }
 }

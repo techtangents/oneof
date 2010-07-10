@@ -18,13 +18,12 @@ public class DefaultOneOfMany implements OneOfMany {
     }
 
     public Object get(int i) {
-        Class c = clarses[i];
+        Class<?> c = clarses[i];
         return get(c);
     }
 
-    public Object get(Class clarse) {
-        validator.validateCast(o, clarse);
-        return get();
+    public <Z> Z get(Class<Z> c) {
+        return c.cast(o);
     }
 
     public Object get() {
@@ -36,7 +35,7 @@ public class DefaultOneOfMany implements OneOfMany {
         return is(c);
     }
 
-    public Object is(Class clarse) {
+    public boolean is(Class clarse) {
         validator.validateClass(clarse, clarses);
         return validator.isValidCast(o, clarse);
     }
