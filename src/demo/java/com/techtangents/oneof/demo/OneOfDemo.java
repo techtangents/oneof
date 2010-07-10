@@ -2,8 +2,8 @@ package com.techtangents.oneof.demo;
 
 import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
-import com.techtangents.oneof.interfaces.type.OneOf2Type;
-import com.techtangents.oneof.interfaces.value.OneOf2;
+import com.techtangents.oneof.numbered.type.OneOf2Type;
+import com.techtangents.oneof.numbered.value.OneOf2;
 
 
 public class OneOfDemo {

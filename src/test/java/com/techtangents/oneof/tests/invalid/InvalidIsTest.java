@@ -3,7 +3,7 @@ package com.techtangents.oneof.tests.invalid;
 import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
 import com.techtangents.oneof.data.Frog;
-import com.techtangents.oneof.interfaces.value.OneOf2;
+import com.techtangents.oneof.numbered.value.OneOf2;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;

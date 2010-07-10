@@ -4,6 +4,8 @@ import com.techtangents.arraymangler.bits.ArrayCaster;
 import com.techtangents.arraymangler.bits.DefaultArrayCaster;
 import com.techtangents.oneof.core.string.Violin;
 import com.techtangents.oneof.invoke.Fn;
+import com.techtangents.oneof.many.DefaultOneOfMany;
+import com.techtangents.oneof.many.OneOfMany;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -15,7 +17,7 @@ class OneOfInvocationHandler implements InvocationHandler {
     private final ArrayCaster arrayCaster = new DefaultArrayCaster();
 
     public OneOfInvocationHandler(Object o, Class[] clarses) {
-        many = new OneOfMany(o, clarses);
+        many = new DefaultOneOfMany(o, clarses);
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) {

@@ -31,7 +31,7 @@ public class Validator {
         return isValidCast(o.getClass(), to); 
     }
 
-    public boolean isValidCast(Class from, Class to) {
+    public boolean isValidCast(Class<?> from, Class<?> to) {
         // to prevent storing subclasses, change this to .equals
         return to.isAssignableFrom(from);
     }

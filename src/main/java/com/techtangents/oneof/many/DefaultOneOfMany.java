@@ -1,8 +1,9 @@
-package com.techtangents.oneof.core.value;
+package com.techtangents.oneof.many;
 
+import com.techtangents.oneof.core.value.Validator;
 import com.techtangents.oneof.invoke.Fn;
 
-public class OneOfMany {
+public class DefaultOneOfMany implements OneOfMany {
 
     private final Validator validator = new Validator();
 
@@ -10,7 +11,7 @@ public class OneOfMany {
     private final Class[] clarses;
     private final int index;
 
-    public OneOfMany(Object o, Class[] clarses) {
+    public DefaultOneOfMany(Object o, Class[] clarses) {
         this.o = o;
         this.clarses = clarses;
         index = validator.which(o.getClass(), clarses);
@@ -40,8 +41,13 @@ public class OneOfMany {
         return validator.isValidCast(o, clarse);
     }
 
-    public <Out> Out invoke(Fn<Object, Out>[] args) {
-        Fn<Object, Out> arg = args[index];
-        return arg.apply(o);
+    public <Out> Out invoke(Fn<?, Out>[] args) {
+        Fn<?, Out> arg = args[index];
+        return asdf(arg);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <Out> Out asdf(Fn<?, Out> arg) {
+        return (Out) ((Fn) arg).apply(o);
     }
 }

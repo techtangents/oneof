@@ -1,7 +1,7 @@
 package com.techtangents.oneof.core.types;
 
 import com.techtangents.oneof.core.value.OneOfValueFactory;
-import com.techtangents.oneof.interfaces.value.OneOf1;
+import com.techtangents.oneof.numbered.value.OneOf1;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

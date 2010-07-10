@@ -1,7 +1,7 @@
 package com.techtangents.oneof.core.value;
 
 import com.techtangents.oneof.api.DefaultOneOf;
-import com.techtangents.oneof.interfaces.value.OneOf1;
+import com.techtangents.oneof.numbered.value.OneOf1;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
