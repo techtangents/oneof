@@ -4,7 +4,7 @@ import com.techtangents.oneof.api.DefaultOneOf;
 import com.techtangents.oneof.api.OneOf;
 import com.techtangents.oneof.data.Chicken;
 import com.techtangents.oneof.data.Frog;
-import com.techtangents.oneof.values.OneOf4;
+import com.techtangents.oneof.interfaces.value.OneOf4;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

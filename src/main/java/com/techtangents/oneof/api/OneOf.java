@@ -1,7 +1,7 @@
 package com.techtangents.oneof.api;
 
-import com.techtangents.oneof.types.*;
-import com.techtangents.oneof.values.*;
+import com.techtangents.oneof.interfaces.type.*;
+import com.techtangents.oneof.interfaces.value.*;
 
 public interface OneOf {
     <A> OneOf1<A> nu(Object o, Class<A> classA);

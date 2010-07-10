@@ -5,8 +5,8 @@ import com.techtangents.oneof.api.OneOf;
 import com.techtangents.oneof.data.Chicken;
 import com.techtangents.oneof.data.Donkey;
 import com.techtangents.oneof.data.Frog;
+import com.techtangents.oneof.interfaces.value.*;
 import com.techtangents.oneof.invoke.Fn;
-import com.techtangents.oneof.values.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,4 +1,4 @@
-package com.techtangents.oneof.values;
+package com.techtangents.oneof.interfaces.value;
 
 import com.techtangents.oneof.invoke.Fn;
 

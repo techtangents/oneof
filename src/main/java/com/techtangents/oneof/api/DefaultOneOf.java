@@ -2,8 +2,8 @@ package com.techtangents.oneof.api;
 
 import com.techtangents.oneof.core.types.OneOfTypeFactory;
 import com.techtangents.oneof.core.value.OneOfValueFactory;
-import com.techtangents.oneof.types.*;
-import com.techtangents.oneof.values.*;
+import com.techtangents.oneof.interfaces.type.*;
+import com.techtangents.oneof.interfaces.value.*;
 
 @SuppressWarnings("unchecked")
 public class DefaultOneOf implements OneOf {
