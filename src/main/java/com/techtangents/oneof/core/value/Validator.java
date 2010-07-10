@@ -1,13 +1,10 @@
 package com.techtangents.oneof.core.value;
 
 public class Validator {
-    public void validateObject(Object o, Class[] clarses) {
-        Class clarse = o.getClass();
-        validateClass(clarse, clarses);
-    }
 
     public void validateClass(Class clarse, Class[] clarses) {
-        if (!isValidClass(clarse, clarses)) kersplode(clarse);
+        if (!isValidClass(clarse, clarses))
+            throw new IllegalArgumentException("Illegal class: " + clarse);
     }
 
     public int which(Class clarse, Class[] clarses) {
@@ -30,9 +27,5 @@ public class Validator {
     public boolean isValidCast(Class<?> from, Class<?> to) {
         // to prevent storing subclasses, change this to .equals
         return to.isAssignableFrom(from);
-    }
-
-    private void kersplode(Class clarse) throws IllegalArgumentException {
-        throw new IllegalArgumentException("Illegal class: " + clarse);
     }
 }
