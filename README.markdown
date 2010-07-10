@@ -13,16 +13,16 @@ Say, I have a value which may be a String, Integer or Foo.
 
 Using OneOf, you'd do something like this:
 
-    OneOf one = new DefaultOneOf();
+    One one = new DefaultOne();
     Object myobject = getMyObjectFromSomewhere();
-    OnOf1Type<String, Integer, Foo> type = one.of(String.class, Integer.class, Foo.class);
-    OneOf<String, Integer, Foo> o = type.nu(myobject);
+    OneOf3Type<String, Integer, Foo> type = one.of(String.class, Integer.class, Foo.class);
+    OneOf3<String, Integer, Foo> o = type.nu(myobject);
 
 You can also create the type and value on one step
 
     OneOf one = new DefaultOneOf();
     Object myobject = getMyObjectFromSomewhere();
-    OneOf<String, Integer, Foo> o = one.nu(myobject, String.class, Integer.class, Foo.class)
+    OneOf3<String, Integer, Foo> o = one.nu(myobject, String.class, Integer.class, Foo.class)
 
 Under the hood, we're still storing as an Object. However:
 
