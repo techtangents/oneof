@@ -2,8 +2,8 @@ package com.techtangents.oneof.core.value;
 
 import com.techtangents.arraymangler.bits.ArrayCaster;
 import com.techtangents.arraymangler.bits.DefaultArrayCaster;
+import com.techtangents.oneof.core.string.Violin;
 import com.techtangents.oneof.invoke.Fn;
-import com.techtangents.oneof.string.Violin;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
