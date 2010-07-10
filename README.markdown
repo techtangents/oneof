@@ -1,16 +1,15 @@
 OneOf
 -----
 
-Java library that provides support for what I call a 'switched' data type. So, what do I mean by this?
+Java library that lets you create "OneOf" objects, which provide similar functionality to Algebraic Data Types found in languages like Haskell.
+A OneOf stores a value, whose type is one of a specified set of types.
 
-A switched data type is a type that has a value of one of a set of types.
+You can create a OneOf "type" by specifying the set of types, then use that "type" to create instances. Alternatively, you can create the type and instance in one hit.
 
-Say, I have a value which may be a String, Integer or Foo. I could represent this in a few different ways:
+Example
+-------
 
-1. Loosely-typed as an object. This leads to class cast exceptions on access, instanceof checks, plus it could hold any value.
-2. class X { String s; Integer i; Foo f; }. This is hard to genericise, and you have to deal with nulls.
-3. Map of the superset of the properties of each class. Only really useful if the types only differ on a few fields.
-4. OneOf
+Say, I have a value which may be a String, Integer or Foo.
 
 Using OneOf, you'd do something like this:
 
@@ -30,32 +29,50 @@ Under the hood, we're still storing as an Object. However:
 - the type of the object is validated earlier. It's validated upon creation of the oneOf, which is earlier than a cast on the way out.
 - it's also validated upon access, if you use get(Class)
 - type-checking is encapsulated
+- you can invoke methods based on the type, without doing type-checking yourself
 
-Future Plans
-============
 
-Handlers
+Invoking
 --------
 
-I'd like to be able to use the OneOf to switch on types and delegate to various handlers.
+You can use a OneOf to invoke one of a set of functions, depending on its type.
+Say I have an object and want to run one method if it's a String, but a different one if it's an Integer.
 
-e.g. something along these lines... (yeah, it probably doesn't compile, just brainstorming)
+    Object x = "hello";
 
-    OneOf oneof = one.of(myobject, String.class, Integer.class);
-    interface Handler<I, O> { O handle(I in); }
-    class MyStringHandler implements Handler<String, Something>...
-    class MyIntegerHandler implements Handler<Integer, Something>...
+    Fn<String, String> fnString = new Fn<String, String>() {
+        public String apply(String s) {
+            return "it's a string";
+        }
+    };
+    Fn<Integer, String> fnInteger = new Fn<Integer, String>() {
+        public String apply(Integer s) {
+            return "it's an integer: " + s.toString();
+        }
+    };
 
-    Map<Class, Handler<?, T>> m = new Map<Class, Handler>();
-    m.put(String.class, new MyStringHandler());
-    m.put(Integer.class, new MyIntegerHandler());  
 
-    Something s = oneof.invoke(m);
+    OneOf2Type<String, Integer> t = ONE.of(String.class, Integer.class);
+    OneOf2<String, Integer> v = t.nu(x);
+    String result = v.invoke(fnString, fnInteger);
 
-Or similar:
+    System.out.println("result = " + result);
+
+
+For this simple example, type-checking would have been less code.
+However, type-checking can lead to messy code that's hard to refactor.
+As the code grows, you may want to encapsulate the type-checking and use strategy 
+pattern to encapsulate the actions for each type. OneOf takes you there straight away.
+
+
+Future plans
+------------
+
+The 'invoke' functionality could be expanded to switch on method, rather than object:
 
     Class handler {
        Something handle(String s) {...}
        Something handle(Integer i) {...}
 
-There's a few other options with some more reflecty magic.
+
+The 'Fn' class above could be replaced by the Functional Java 'F' interface.
