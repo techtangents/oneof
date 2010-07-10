@@ -59,6 +59,7 @@ public class InvokeTest {
     private void check2(Object expected, Object o) {
         OneOf2<Integer,String> onesey = one.of(Integer.class, String.class).nu(o);
         assertEquals(expected, onesey.invoke(integerHandler, stringHandler));
+        assertEquals(expected, onesey.invoke(new Fn[] {integerHandler, stringHandler}));
     }
 
     @Test public void test3() {

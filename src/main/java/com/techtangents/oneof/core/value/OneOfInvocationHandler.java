@@ -12,9 +12,10 @@ import java.lang.reflect.Method;
 
 class OneOfInvocationHandler implements InvocationHandler {
 
-    private final OneOfMany many;
     private final Violin violin = new Violin();
     private final ArrayCaster arrayCaster = new DefaultArrayCaster();
+    
+    private final OneOfMany many;
 
     public OneOfInvocationHandler(Object o, Class[] clarses) {
         many = new DefaultOneOfMany(o, clarses);
@@ -67,7 +68,16 @@ class OneOfInvocationHandler implements InvocationHandler {
 
     @SuppressWarnings("unchecked")
     private Object theOtherInvoke(Object[] args) {
-        Fn[] fns = arrayCaster.cast(Fn.class, args);
+        Fn[] fns = getInvokeArgs(args);
         return many.invoke(fns);
+    }
+
+    private Fn[] getInvokeArgs(Object[] args) {
+        if (arg1IsArray(args)) return (Fn[]) args[0];
+        return arrayCaster.cast(Fn.class, args);
+    }
+
+    private boolean arg1IsArray(Object[] args) {
+        return args.length == 1 && args[0].getClass().isArray();
     }
 }

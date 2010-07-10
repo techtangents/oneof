@@ -40,13 +40,10 @@ public class DefaultOneOfMany implements OneOfMany {
         return validator.isValidCast(o, clarse);
     }
 
-    public <Out> Out invoke(Fn<?, Out>[] args) {
-        Fn<?, Out> arg = args[index];
-        return asdf(arg);
+    @SuppressWarnings("unchecked")
+    public Object invoke(Fn[] args) {
+        Fn arg = args[index];
+        return arg.apply(o);
     }
 
-    @SuppressWarnings("unchecked")
-    private <Out> Out asdf(Fn<?, Out> arg) {
-        return (Out) ((Fn) arg).apply(o);
-    }
 }
