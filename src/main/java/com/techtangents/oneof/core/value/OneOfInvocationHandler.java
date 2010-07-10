@@ -4,8 +4,8 @@ import com.techtangents.arraymangler.bits.ArrayCaster;
 import com.techtangents.arraymangler.bits.DefaultArrayCaster;
 import com.techtangents.oneof.core.string.Violin;
 import com.techtangents.oneof.invoke.Fn;
-import com.techtangents.oneof.many.DefaultOneOfMany;
-import com.techtangents.oneof.many.OneOfMany;
+import com.techtangents.oneof.types.value.DefaultOneOfMany;
+import com.techtangents.oneof.types.value.OneOfMany;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -1,19 +1,19 @@
 package com.techtangents.oneof.demo;
 
-import com.techtangents.oneof.api.DefaultOneOf;
-import com.techtangents.oneof.api.OneOf;
-import com.techtangents.oneof.numbered.type.OneOf2Type;
-import com.techtangents.oneof.numbered.value.OneOf2;
+import com.techtangents.oneof.api.DefaultOne;
+import com.techtangents.oneof.api.One;
+import com.techtangents.oneof.types.type.OneOf2Type;
+import com.techtangents.oneof.types.value.OneOf2;
 
 
 public class OneOfDemo {
 
-    private static final OneOf one = new DefaultOneOf();
+    private static final One ONE = new DefaultOne();
 
     public static void main(String[] args) {
 
         Object o = "hello";
-        OneOf2Type<String, Integer> type = one.of(String.class, Integer.class);
+        OneOf2Type<String, Integer> type = ONE.of(String.class, Integer.class);
         OneOf2<String, Integer> container = type.nu(o);
 
         System.out.println("container.get() = " + container.get());

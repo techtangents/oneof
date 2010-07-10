@@ -1,16 +1,16 @@
 package com.techtangents.oneof.tests.individual;
 
-import com.techtangents.oneof.api.DefaultOneOf;
-import com.techtangents.oneof.api.OneOf;
+import com.techtangents.oneof.api.DefaultOne;
+import com.techtangents.oneof.api.One;
 import com.techtangents.oneof.data.Chicken;
-import com.techtangents.oneof.numbered.value.OneOf3;
+import com.techtangents.oneof.types.value.OneOf3;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class OneOf3Test {
-    private final OneOf one = new DefaultOneOf();
+    private final One one = new DefaultOne();
 
     @Test
     public void test() {

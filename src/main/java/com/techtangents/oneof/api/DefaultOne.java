@@ -2,11 +2,11 @@ package com.techtangents.oneof.api;
 
 import com.techtangents.oneof.core.types.OneOfTypeFactory;
 import com.techtangents.oneof.core.value.OneOfValueFactory;
-import com.techtangents.oneof.numbered.type.*;
-import com.techtangents.oneof.numbered.value.*;
+import com.techtangents.oneof.types.type.*;
+import com.techtangents.oneof.types.value.*;
 
 @SuppressWarnings("unchecked")
-public class DefaultOneOf implements OneOf {
+public class DefaultOne implements One {
     private final OneOfValueFactory vf = new OneOfValueFactory();
     private final OneOfTypeFactory tf = new OneOfTypeFactory();
 

@@ -1,19 +1,19 @@
 package com.techtangents.oneof.tests.invoke;
 
-import com.techtangents.oneof.api.DefaultOneOf;
-import com.techtangents.oneof.api.OneOf;
+import com.techtangents.oneof.api.DefaultOne;
+import com.techtangents.oneof.api.One;
 import com.techtangents.oneof.data.Chicken;
 import com.techtangents.oneof.data.Donkey;
 import com.techtangents.oneof.data.Frog;
 import com.techtangents.oneof.invoke.Fn;
-import com.techtangents.oneof.numbered.value.*;
+import com.techtangents.oneof.types.value.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class InvokeTest {
 
-    private final OneOf one = new DefaultOneOf();
+    private final One one = new DefaultOne();
 
     private final Fn<String, String> stringHandler = new Fn<String, String>() {
         public String apply(String s) {
