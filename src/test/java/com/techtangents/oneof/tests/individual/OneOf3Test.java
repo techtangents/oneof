@@ -22,6 +22,7 @@ public class OneOf3Test {
     private void check(Object value, OneOf3<String, Integer, Chicken> one) {
         assertEquals(value, one.get());
         assertEquals(value, one.getA());
+        assertEquals(value, one.get(0));
 
         try {
             one.getB();
@@ -40,6 +41,10 @@ public class OneOf3Test {
         assertEquals(true, one.isA());
         assertEquals(false, one.isB());
         assertEquals(false, one.isC());
+
+        assertEquals(true, one.is(0));
+        assertEquals(false, one.is(1));
+        assertEquals(false, one.is(2));
 
         assertEquals(true, one.is(String.class));
         assertEquals(false, one.is(Integer.class));

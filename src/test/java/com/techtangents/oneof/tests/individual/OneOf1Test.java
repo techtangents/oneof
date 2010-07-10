@@ -21,6 +21,7 @@ public class OneOf1Test {
     private void check(Object value, OneOf1<String> one) {
         assertEquals(value, one.get());
         assertEquals(value, one.getA());
+        assertEquals(value, one.get(0));
 
         assertEquals(true, one.isA());
 
@@ -29,7 +30,21 @@ public class OneOf1Test {
         try {
             assertEquals(false, one.is(Integer.class));
             fail();
-        } catch(IllegalArgumentException e){
+        } catch(Exception e){
+            //expected
+        }
+
+        try {
+            assertEquals(false, one.is(1));
+            fail();
+        } catch(Exception e){
+            //expected
+        }
+
+        try {
+            assertEquals(false, one.get(1));
+            fail();
+        } catch(Exception e){
             //expected
         }
     }

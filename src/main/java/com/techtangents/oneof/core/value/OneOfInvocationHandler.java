@@ -5,7 +5,6 @@ import com.techtangents.arraymangler.bits.DefaultArrayCaster;
 import com.techtangents.oneof.core.string.Violin;
 import com.techtangents.oneof.invoke.Fn;
 import com.techtangents.oneof.types.value.DefaultOneOfMany;
-import com.techtangents.oneof.types.value.OneOfMany;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -15,7 +14,7 @@ class OneOfInvocationHandler implements InvocationHandler {
     private final Violin violin = new Violin();
     private final ArrayCaster arrayCaster = new DefaultArrayCaster();
     
-    private final OneOfMany many;
+    private final DefaultOneOfMany many;
 
     public OneOfInvocationHandler(Object o, Class[] clarses) {
         many = new DefaultOneOfMany(o, clarses);
@@ -38,8 +37,13 @@ class OneOfInvocationHandler implements InvocationHandler {
     }
 
     private Object is(Object[] args) {
-        Class c = (Class) args[0];
-        return many.is(c);
+        Object v = args[0];
+        if (v instanceof Class<?>) {
+            return many.is((Class<?>)v);
+        } else if (v instanceof Integer) {
+            return many.is((Integer)v);
+        }
+        throw new UnsupportedOperationException();
     }
 
     private Object is(String methodName) {
@@ -49,8 +53,13 @@ class OneOfInvocationHandler implements InvocationHandler {
 
     public Object get(Object[] args) {
         if (args != null && args.length == 1) {
-            Class<?> clarse = (Class<?>) args[0];
-            return many.get(clarse);
+            Object v = args[0];
+            if (v instanceof Class<?>) {
+                return many.get((Class<?>)v);
+            } else if (v instanceof Integer) {
+                return many.get((Integer)v);
+            }
+            throw new UnsupportedOperationException();
         } else {
             return many.get();
         }

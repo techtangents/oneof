@@ -3,7 +3,7 @@ package com.techtangents.oneof.types.value;
 import com.techtangents.oneof.core.value.Validator;
 import com.techtangents.oneof.invoke.Fn;
 
-public class DefaultOneOfMany implements OneOfMany {
+public class DefaultOneOfMany implements OneOf {
 
     private final Validator validator = new Validator();
 
@@ -45,5 +45,4 @@ public class DefaultOneOfMany implements OneOfMany {
         Fn arg = args[index];
         return arg.apply(o);
     }
-
 }
