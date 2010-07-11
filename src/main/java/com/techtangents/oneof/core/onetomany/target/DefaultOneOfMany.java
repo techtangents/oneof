@@ -13,6 +13,7 @@ public class DefaultOneOfMany implements OneOf {
     private final Class[] clarses;
     private final int index;
     private final Class actualClass;
+    private final Hollar hollar = new Hollar();
 
     // don't instantiate directly - use a DefaultOne to get an instance
     public DefaultOneOfMany(Object o, Class[] clarses) {
@@ -57,6 +58,6 @@ public class DefaultOneOfMany implements OneOf {
     }
 
     public <Out> Out marshall(Class<Out> returnType, Object invokee) {
-        return new Hollar().marshall(returnType, invokee, actualClass, o);
+        return hollar.marshall(returnType, invokee, actualClass, o);
     }
 }
