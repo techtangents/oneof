@@ -64,15 +64,36 @@ However, type-checking can lead to messy code that's hard to refactor.
 As the code grows, you may want to encapsulate the type-checking and use strategy 
 pattern to encapsulate the actions for each type. OneOf takes you there straight away.
 
+Tip: In IntelliJ, turn on the setting "Editor -> Code Folding -> Collapse by Default -> closures".
+This makes IntelliJ collapse the Fn instances down to something much more readable.
+
+Marshalling
+-----------
+
+"marshall" is like "invoke", except it's type-switched on method, rather than object.
+In the below example, the value is a String, so the method "stringThing" is invoked.
+
+    public class MarshallDemo {
+        private static final One one = new DefaultOne();
+
+        public static class MyInvokee {
+            public String stringThing(String input) { return "was a string"; }
+            public String integerThing(Integer input) { return "was an integer"; }
+        }
+
+        public static void main(String[] args) {
+            Object invokee = new MyInvokee();
+            OneOf2Type<Integer, String> t = one.of(Integer.class, String.class);
+            OneOf2<Integer, String> v = t.nu("some string");
+            String output = v.marshall(String.class, invokee);
+            System.out.println("output = " + output);
+        }
+    }
+
+Note: the invokee classes must be public and cannot be inner classes, otherwise OneOf can't
+reflect their members.
 
 Future plans
 ------------
 
-The 'invoke' functionality could be expanded to switch on method, rather than object:
-
-    Class handler {
-       Something handle(String s) {...}
-       Something handle(Integer i) {...}
-
-
-The 'Fn' class above could be replaced by the Functional Java 'F' interface.
+The 'Fn' interface above could be replaced by the Functional Java 'F' interface.
