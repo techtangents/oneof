@@ -23,6 +23,7 @@ public class DefaultOneOfMany implements OneOf {
     }
 
     public Object get(int i) {
+        validateIndex(i);
         Class<?> c = clarses[i];
         return get(c);
     }
@@ -36,7 +37,12 @@ public class DefaultOneOfMany implements OneOf {
     }
 
     public Object is(int i) {
+        validateIndex(i);
         return index == i;
+    }
+
+    private void validateIndex(int i) {
+        if (i < 0 || i >= clarses.length) throw new IllegalArgumentException("OneOf does not have class # " + i);
     }
 
     public boolean is(Class clarse) {
