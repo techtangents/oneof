@@ -1,7 +1,7 @@
 package com.techtangents.oneof.api;
 
+import com.techtangents.oneof.core.onetomany.dispatch.OneOfValueFactory;
 import com.techtangents.oneof.core.types.OneOfTypeFactory;
-import com.techtangents.oneof.core.value.OneOfValueFactory;
 import com.techtangents.oneof.types.type.*;
 import com.techtangents.oneof.types.value.*;
 

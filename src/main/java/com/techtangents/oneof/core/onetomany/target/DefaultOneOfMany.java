@@ -1,4 +1,4 @@
-package com.techtangents.oneof.core.value;
+package com.techtangents.oneof.core.onetomany.target;
 
 import com.techtangents.oneof.core.hollar.Hollar;
 import com.techtangents.oneof.core.validator.Validator;
@@ -15,7 +15,7 @@ public class DefaultOneOfMany implements OneOf {
     private final Class actualClass;
 
     // don't instantiate directly - use a DefaultOne to get an instance
-    DefaultOneOfMany(Object o, Class[] clarses) {
+    public DefaultOneOfMany(Object o, Class[] clarses) {
         this.o = o;
         this.clarses = clarses;
         index = validator.which(o.getClass(), clarses);

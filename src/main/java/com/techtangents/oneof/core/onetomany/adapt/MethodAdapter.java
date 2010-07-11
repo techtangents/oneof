@@ -1,4 +1,4 @@
-package com.techtangents.oneof.core.value.methodadapters;
+package com.techtangents.oneof.core.onetomany.adapt;
 
 import com.techtangents.oneof.types.value.OneOf;
 

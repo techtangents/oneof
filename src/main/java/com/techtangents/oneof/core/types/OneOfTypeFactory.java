@@ -1,6 +1,6 @@
 package com.techtangents.oneof.core.types;
 
-import com.techtangents.oneof.core.value.OneOfValueFactory;
+import com.techtangents.oneof.core.onetomany.dispatch.OneOfValueFactory;
 import com.techtangents.oneof.types.value.OneOf;
 
 import java.lang.reflect.InvocationHandler;
