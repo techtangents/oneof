@@ -1,7 +1,6 @@
 package com.techtangents.oneof.core.value;
 
 import com.techtangents.oneof.api.DefaultOne;
-import com.techtangents.oneof.core.many.DefaultOneOfMany;
 import com.techtangents.oneof.types.value.OneOf;
 
 import java.lang.reflect.InvocationHandler;

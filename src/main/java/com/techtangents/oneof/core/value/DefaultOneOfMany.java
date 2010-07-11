@@ -1,5 +1,6 @@
-package com.techtangents.oneof.core.many;
+package com.techtangents.oneof.core.value;
 
+import com.techtangents.oneof.core.hollar.Hollar;
 import com.techtangents.oneof.core.validator.Validator;
 import com.techtangents.oneof.invoke.Fn;
 import com.techtangents.oneof.types.value.OneOf;
@@ -11,11 +12,14 @@ public class DefaultOneOfMany implements OneOf {
     private final Object o;
     private final Class[] clarses;
     private final int index;
+    private final Class actualClass;
 
-    public DefaultOneOfMany(Object o, Class[] clarses) {
+    // don't instantiate directly - use a DefaultOne to get an instance
+    DefaultOneOfMany(Object o, Class[] clarses) {
         this.o = o;
         this.clarses = clarses;
         index = validator.which(o.getClass(), clarses);
+        actualClass = clarses[index];
     }
 
     public Object get(int i) {
@@ -32,8 +36,7 @@ public class DefaultOneOfMany implements OneOf {
     }
 
     public Object is(int i) {
-        Class c = clarses[i];
-        return is(c);
+        return index == i;
     }
 
     public boolean is(Class clarse) {
@@ -45,5 +48,9 @@ public class DefaultOneOfMany implements OneOf {
     public Object invoke(Fn[] args) {
         Fn arg = args[index];
         return arg.apply(o);
+    }
+
+    public <Out> Out marshall(Class<Out> returnType, Object invokee) {
+        return new Hollar().marshall(returnType, invokee, actualClass, o);
     }
 }

@@ -11,4 +11,5 @@ public interface OneOf {
     <Z> Z get(Class<Z> clarse);
 
     Object invoke(Fn[] args);
+    <Out> Out marshall(Class<Out> returnType, Object invokee);
 }

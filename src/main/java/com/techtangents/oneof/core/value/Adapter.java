@@ -70,4 +70,10 @@ class Adapter {
     private boolean arg1IsArray(Object[] args) {
         return args.length == 1 && args[0].getClass().isArray();
     }
+
+    public Object marshall(Object[] args) {
+        Class<?> returnType = (Class<?>) args[0];
+        Object invokee = args[1];
+        return many.marshall(returnType, invokee);
+    }
 }
