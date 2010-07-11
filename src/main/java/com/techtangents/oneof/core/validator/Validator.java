@@ -30,6 +30,7 @@ public class Validator {
     }
 
     public void validateIndex(int i, Class[] clarses) {
-        if (i < 0 || i >= clarses.length) throw new IllegalArgumentException("OneOf does not have class # " + i);
+        if (i < 0 || i >= clarses.length)
+            throw new IllegalArgumentException("OneOf does not have class # " + i);
     }
 }
