@@ -1,7 +1,8 @@
-package com.techtangents.oneof.types.value;
+package com.techtangents.oneof.core.many;
 
 import com.techtangents.oneof.core.validator.Validator;
 import com.techtangents.oneof.invoke.Fn;
+import com.techtangents.oneof.types.value.OneOf;
 
 public class DefaultOneOfMany implements OneOf {
 
