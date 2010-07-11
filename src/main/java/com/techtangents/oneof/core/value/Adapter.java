@@ -2,14 +2,19 @@ package com.techtangents.oneof.core.value;
 
 import com.techtangents.arraymangler.bits.ArrayCaster;
 import com.techtangents.arraymangler.bits.DefaultArrayCaster;
-import com.techtangents.oneof.core.string.Violin;
+import com.techtangents.oneof.core.value.methodadapters.GetMethodAdapter;
+import com.techtangents.oneof.core.value.methodadapters.IsMethodAdapter;
+import com.techtangents.oneof.core.value.methodadapters.MethodAdapter;
 import com.techtangents.oneof.invoke.Fn;
 import com.techtangents.oneof.types.value.OneOf;
 
 class Adapter {
 
-    private final Violin violin = new Violin();
     private final ArrayCaster arrayCaster = new DefaultArrayCaster();
+    private final SuffixMethodPicker picker = new SuffixMethodPicker();
+
+    private final MethodAdapter isMethodAdapter = new IsMethodAdapter();
+    private final MethodAdapter getMethodAdapter = new GetMethodAdapter();
 
     private final OneOf many;
 
@@ -18,42 +23,21 @@ class Adapter {
     }
 
     public Object is(String methodName, Object[] args) {
-        Object v = args[0];
-        if (v instanceof Class<?>) {
-            return many.is((Class<?>)v);
-        } else if (v instanceof Integer) {
-            return many.is((Integer)v);
-        }
-        throw new UnsupportedOperationException();
+        return isMethodAdapter.adapt(this.many, methodName, args);
     }
 
     public Object isX(String methodName, Object args) {
-        int i = pick(methodName, "is");
+        int i = picker.pick(methodName, "is");
         return many.is(i);
     }
 
     public Object get(String methodName, Object[] args) {
-        if (args != null && args.length == 1) {
-            Object v = args[0];
-            if (v instanceof Class<?>) {
-                return many.get((Class<?>)v);
-            } else if (v instanceof Integer) {
-                return many.get((Integer)v);
-            }
-            throw new UnsupportedOperationException();
-        } else {
-            return many.get();
-        }
+        return getMethodAdapter.adapt(this.many, methodName, args);
     }
 
     public Object getX(String methodName, Object[] args) {
-        int i = pick(methodName, "get");
+        int i = picker.pick(methodName, "get");
         return many.get(i);
-    }
-
-    private int pick(String methodName, String prefix) {
-        String suffix = violin.removePrefix(methodName, prefix);
-        return suffix.charAt(0) - 'A';
     }
 
     @SuppressWarnings("unchecked")
