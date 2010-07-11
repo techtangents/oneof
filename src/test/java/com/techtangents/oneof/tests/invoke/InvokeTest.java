@@ -44,6 +44,7 @@ public class InvokeTest {
 
     @Test public void test1() {
         check1("1234", 1234);
+        check1("12", 12);
     }
 
     private void check1(Object expected, Object o) {

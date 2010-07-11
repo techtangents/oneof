@@ -7,7 +7,7 @@ import com.techtangents.oneof.types.type.OneOf2Type;
 import com.techtangents.oneof.types.value.OneOf2;
 
 public class InvokeDemo {
-    private static One ONE = new DefaultOne();
+    private static final One ONE = new DefaultOne();
 
     public static void main(String[] args) {
         Object x = "hello";

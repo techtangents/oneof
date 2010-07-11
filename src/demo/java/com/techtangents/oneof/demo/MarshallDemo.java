@@ -5,10 +5,10 @@ import com.techtangents.oneof.api.One;
 import com.techtangents.oneof.types.type.OneOf2Type;
 import com.techtangents.oneof.types.value.OneOf2;
 
+@SuppressWarnings({"ALL"})
 public class MarshallDemo {
     private static final One one = new DefaultOne();
 
-    @SuppressWarnings("unused")
     public static class MyInvokee {
         public String stringThing(String input) { return "was a string"; }
         public String integerThing(Integer input) { return "was an integer"; }
