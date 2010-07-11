@@ -17,7 +17,7 @@ class Adapter {
         this.many = many;
     }
 
-    public Object is(Object[] args) {
+    public Object is(String methodName, Object[] args) {
         Object v = args[0];
         if (v instanceof Class<?>) {
             return many.is((Class<?>)v);
@@ -27,12 +27,12 @@ class Adapter {
         throw new UnsupportedOperationException();
     }
 
-    public Object isX(String methodName) {
+    public Object isX(String methodName, Object args) {
         int i = pick(methodName, "is");
         return many.is(i);
     }
 
-    public Object get(Object[] args) {
+    public Object get(String methodName, Object[] args) {
         if (args != null && args.length == 1) {
             Object v = args[0];
             if (v instanceof Class<?>) {
@@ -46,7 +46,7 @@ class Adapter {
         }
     }
 
-    public Object getX(String methodName) {
+    public Object getX(String methodName, Object[] args) {
         int i = pick(methodName, "get");
         return many.get(i);
     }
@@ -57,7 +57,7 @@ class Adapter {
     }
 
     @SuppressWarnings("unchecked")
-    public Object invoke(Object[] args) {
+    public Object invoke(String methodName, Object[] args) {
         Fn[] fns = getInvokeArgs(args);
         return many.invoke(fns);
     }
@@ -71,7 +71,7 @@ class Adapter {
         return args.length == 1 && args[0].getClass().isArray();
     }
 
-    public Object marshall(Object[] args) {
+    public Object marshall(String methodName, Object[] args) {
         Class<?> returnType = (Class<?>) args[0];
         Object invokee = args[1];
         return many.marshall(returnType, invokee);

@@ -18,12 +18,12 @@ class Dispatcher implements InvocationHandler {
     private Object handle(Method method, Object[] args) {
         String methodName = method.getName();
 
-        if (methodName.equals("is"))            return adapter.is(args);
-        else if (methodName.startsWith("is"))   return adapter.isX(methodName);
-        else if (methodName.equals("get"))      return adapter.get(args);
-        else if (methodName.startsWith("get"))  return adapter.getX(methodName);
-        else if (methodName.equals("invoke"))   return adapter.invoke(args);
-        else if (methodName.equals("marshall")) return adapter.marshall(args);
+        if (methodName.equals("is"))            return adapter.is(methodName, args);
+        else if (methodName.startsWith("is"))   return adapter.isX(methodName, args);
+        else if (methodName.equals("get"))      return adapter.get(methodName, args);
+        else if (methodName.startsWith("get"))  return adapter.getX(methodName, args);
+        else if (methodName.equals("invoke"))   return adapter.invoke(methodName, args);
+        else if (methodName.equals("marshall")) return adapter.marshall(methodName, args);
 
         throw new UnsupportedOperationException();
     }
