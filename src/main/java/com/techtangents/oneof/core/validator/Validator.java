@@ -28,4 +28,8 @@ public class Validator {
         // to prevent storing subclasses, change this to .equals
         return to.isAssignableFrom(from);
     }
+
+    public void validateIndex(int i, Class[] clarses) {
+        if (i < 0 || i >= clarses.length) throw new IllegalArgumentException("OneOf does not have class # " + i);
+    }
 }
