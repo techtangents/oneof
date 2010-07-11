@@ -1,4 +1,4 @@
-package com.techtangents.oneof.core.value;
+package com.techtangents.oneof.core.value.methodadapters;
 
 import com.techtangents.oneof.core.string.Violin;
 
