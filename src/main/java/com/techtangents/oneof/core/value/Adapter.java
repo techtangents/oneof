@@ -2,9 +2,7 @@ package com.techtangents.oneof.core.value;
 
 import com.techtangents.arraymangler.bits.ArrayCaster;
 import com.techtangents.arraymangler.bits.DefaultArrayCaster;
-import com.techtangents.oneof.core.value.methodadapters.GetMethodAdapter;
-import com.techtangents.oneof.core.value.methodadapters.IsMethodAdapter;
-import com.techtangents.oneof.core.value.methodadapters.MethodAdapter;
+import com.techtangents.oneof.core.value.methodadapters.*;
 import com.techtangents.oneof.invoke.Fn;
 import com.techtangents.oneof.types.value.OneOf;
 
@@ -14,7 +12,9 @@ class Adapter {
     private final SuffixMethodPicker picker = new SuffixMethodPicker();
 
     private final MethodAdapter isMethodAdapter = new IsMethodAdapter();
+    private final MethodAdapter isXMethodAdapter = new IsXMethodAdapter();
     private final MethodAdapter getMethodAdapter = new GetMethodAdapter();
+    private final MethodAdapter getXMethodAdapter = new GetXMethodAdapter();
 
     private final OneOf many;
 
@@ -23,21 +23,19 @@ class Adapter {
     }
 
     public Object is(String methodName, Object[] args) {
-        return isMethodAdapter.adapt(this.many, methodName, args);
+        return isMethodAdapter.adapt(many, methodName, args);
     }
 
-    public Object isX(String methodName, Object args) {
-        int i = picker.pick(methodName, "is");
-        return many.is(i);
+    public Object isX(String methodName, Object[] args) {
+        return isXMethodAdapter.adapt(many, methodName, args);
     }
 
     public Object get(String methodName, Object[] args) {
-        return getMethodAdapter.adapt(this.many, methodName, args);
+        return getMethodAdapter.adapt(many, methodName, args);
     }
 
     public Object getX(String methodName, Object[] args) {
-        int i = picker.pick(methodName, "get");
-        return many.get(i);
+        return getXMethodAdapter.adapt(many, methodName, args);
     }
 
     @SuppressWarnings("unchecked")
