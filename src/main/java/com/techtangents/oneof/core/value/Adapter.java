@@ -27,7 +27,7 @@ class Adapter {
         throw new UnsupportedOperationException();
     }
 
-    public Object is(String methodName) {
+    public Object isX(String methodName) {
         int i = pick(methodName, "is");
         return many.is(i);
     }

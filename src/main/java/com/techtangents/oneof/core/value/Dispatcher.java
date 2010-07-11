@@ -19,7 +19,7 @@ class Dispatcher implements InvocationHandler {
         String methodName = method.getName();
 
         if (methodName.equals("is"))            return adapter.is(args);
-        else if (methodName.startsWith("is"))   return adapter.is(methodName);
+        else if (methodName.startsWith("is"))   return adapter.isX(methodName);
         else if (methodName.equals("get"))      return adapter.get(args);
         else if (methodName.startsWith("get"))  return adapter.getX(methodName);
         else if (methodName.equals("invoke"))   return adapter.invoke(args);
